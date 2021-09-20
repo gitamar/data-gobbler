@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message FileProcessRequest {
+    string fileType = 1;
+    string data = 2;
+    string fileName = 3;
+}

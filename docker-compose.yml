@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  data_gobbler_db:
+    container_name: data_gobbler_db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dguser
+      POSTGRES_PASSWORD: dg1234
+      POSTGRES_DB: data_gobbler
+    ports:
+      - "7000:5432"
+    volumes:
+      - data_gobbler_db_data:/var/lib/postgresql/data
+
+
+  data_gobbler_rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'data_gobbler_rabbitmq'
+    ports:
+        - 8000:5672
+        - 8001:15672
+
+
+volumes:
+    data_gobbler_db_data:
+
